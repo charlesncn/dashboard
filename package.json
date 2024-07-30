@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "14.0.1",
+    "@safaricom-mxl/ui": "^0.0.0",
     "next": "^14.2.5",
     "react": "18",
-    "react-dom": "18"
+    "react-dom": "18",
+    "react-icons": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "8",

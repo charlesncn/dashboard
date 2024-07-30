@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+}
+.menu{
+    flex: 1;
+    background-color: var(--bg);
+}
+.content{
+    flex:4;
+    padding: var(--padding);
+}

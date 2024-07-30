@@ -1,9 +1,15 @@
 :root {
     --bg: #ffffff;
     --bgSoft: #f4f4f6;
-    --bgSaf: #52b44b;
+    --safAccent: #52b44b;
     --text: #000000;
-    --textSoft: #000000;
+    --textSoft: #717171;
+    --activeTab: #f4f4f4;
+    --padding: 20px;
+    --marginMax: 20px;
+    --marginMin: 5px;
+    --gap: 10px;
+    --textH2: 16px 
 }
 
 *{
@@ -13,6 +19,13 @@
 }
 
 body{
-    background-color: var(var(--bg));
+    background-color: var(--bgSoft);
     color: var(--text);
+}
+a{
+    text-decoration: none;
+    color: var(--textSoft);
+}
+text{
+    color: var(--textSoft);
 }

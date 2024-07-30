@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    padding: var(--padding);
+    align-items: center;
+    gap: var(--gap);
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+.container:hover,
+.active{
+    background-color: var(--activeTab);
+    color: var(--safAccent);
+}
+
+.container.title{
+    color: var(--textSoft);
+}

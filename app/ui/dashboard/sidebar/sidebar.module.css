@@ -1,0 +1,42 @@
+.container{
+    position: sticky;
+    top: 40px;
+    margin: var(--marginMax);
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.userImage{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userDetails{
+    display: flex;
+    flex-direction: column;
+}
+.userTitle{
+    font-size: var(--textH2);
+    color: var(--textSoft);
+}
+
+.divider{
+    height: 0.5px;
+    margin: 30px 5px;
+    background-color: var(--textSoft);
+}
+
+.list{
+    list-style: none;
+}
+
+.category{
+    color: var(--text);
+    font-size: var(--textH2);
+    font-weight: bold;
+}
