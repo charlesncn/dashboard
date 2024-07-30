@@ -5,6 +5,7 @@
     gap: var(--gap);
     margin: 10px 0px;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .container:hover,

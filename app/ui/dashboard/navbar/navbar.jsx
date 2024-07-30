@@ -20,10 +20,10 @@ const Navbar = () => {
                     <input type='text' placeholder='Search..' className={styles.input} />
                 </div>
                 <div className={styles.icons}>
-                    <MdDashboard size={20} />
-                    <MdOutlineChat size={20} />
-                    <MdNotifications size={20} />
-                    <MdPublic size={20} />
+                    <MdDashboard className={styles.icon} size={20} />
+                    <MdOutlineChat className={styles.icon} size={20} />
+                    <MdNotifications className={styles.icon} size={20} />
+                    <MdPublic className={styles.icon} size={20} />
                 </div>
             </div>
         </div>

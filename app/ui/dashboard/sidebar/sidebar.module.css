@@ -44,7 +44,7 @@
 .logout{
     display: flex;
     padding: var(--padding);
-    margin: var(--marginMin)/2 0px;
+    margin: var(--marginMin) 0px;
     align-items: center;
     gap: var(--gap);
     cursor: pointer;
@@ -52,6 +52,7 @@
     background-color: transparent;
     width: 100%;
     border: none;
+    transition: 0.3s;
 }
 
 .logout:hover{
