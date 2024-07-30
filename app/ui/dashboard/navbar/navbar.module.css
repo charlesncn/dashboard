@@ -1,0 +1,46 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding);
+    background-color: var(--bg);
+}
+.title{
+    color: var(--safAccent);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    background-color: var(--activeTab);
+    padding: var(--paddingMin);
+    border-radius: 10px;
+}
+
+.search{
+    display: flex;
+    
+}
+
+.input{
+    background-color: transparent;
+    border: none;
+    color: var(--textSoft);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.icons{
+    display: flex;
+    gap: var(--gap);
+}

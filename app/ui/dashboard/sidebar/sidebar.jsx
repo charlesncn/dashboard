@@ -81,6 +81,11 @@ const Sidebar = () => {
                     </li>
                 ))}
             </ul>
+            <div className={styles.divider}></div>
+
+            <button className={styles.logout}>
+                <MdLogout/>
+                 Logout</button>
         </div>
     );
 };

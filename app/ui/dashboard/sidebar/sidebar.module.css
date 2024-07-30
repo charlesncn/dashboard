@@ -40,3 +40,21 @@
     font-size: var(--textH2);
     font-weight: bold;
 }
+
+.logout{
+    display: flex;
+    padding: var(--padding);
+    margin: var(--marginMin)/2 0px;
+    align-items: center;
+    gap: var(--gap);
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+}
+
+.logout:hover{
+    background-color: var(--activeTab);
+    color: var(--safAccent);
+}
