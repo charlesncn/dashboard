@@ -1,3 +1,14 @@
 .container{
-    
+   border-radius: 10px;
+   margin-top: var(--marginMax);
+}
+
+.title{
+    margin-bottom: var(--marginMax);
+    font-weight: 200;
+    color: var(--textSoft);
+}
+
+.tableHeader{
+    background-color: var(--tableheader);
 }
