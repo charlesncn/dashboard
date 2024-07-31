@@ -1,3 +1,35 @@
 .container{
-    
+    flex: 1;
+    display: flex;
+    background-color: var(--bg);
+    padding: var(--paddingMax);
+    border-radius: 10px;
+    gap: var(--gap);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.container:hover{
+    background-color: var(--activeTabAccent);
+    color: var(--bg);
+}
+
+
+.texts{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+.title{
+    font-size: var(--textH4);
+    font-weight: 800;
+}
+.number{
+    font-size: var(--textH2);
+    font-weight: 500;
+}
+
+.details{
+    font-size: var(--textH5);
+    font-weight: 300;
 }

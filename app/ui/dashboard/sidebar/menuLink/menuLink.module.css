@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    padding: var(--padding);
+    padding: var(--paddingMax);
     align-items: center;
     gap: var(--gap);
     margin: 10px 0px;

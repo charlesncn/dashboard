@@ -21,7 +21,7 @@
     flex-direction: column;
 }
 .userTitle{
-    font-size: var(--textH2);
+    font-size: var(--textH4);
     color: var(--textSoft);
 }
 
@@ -37,13 +37,13 @@
 
 .category{
     color: var(--text);
-    font-size: var(--textH2);
+    font-size: var(--textH4);
     font-weight: bold;
 }
 
 .logout{
     display: flex;
-    padding: var(--padding);
+    padding: var(--paddingMax);
     margin: var(--marginMin) 0px;
     align-items: center;
     gap: var(--gap);

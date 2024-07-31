@@ -5,12 +5,17 @@
     --text: #000000;
     --textSoft: #717171;
     --activeTab: #f4f4f4;
-    --padding: 20px;
+    --activeTabAccent: #52b44b;
+    --paddingMax: 20px;
     --paddingMin: 10px;
     --marginMax: 20px;
     --marginMin: 5px;
     --gap: 10px;
-    --textH2: 16px 
+    --textH1: 32px;
+    --textH2: 24px;
+    --textH3: 18px;
+    --textH4: 16px;
+    --textH5: 14px;
 }
 
 *{
