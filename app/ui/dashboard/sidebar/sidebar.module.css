@@ -2,6 +2,7 @@
     position: sticky;
     top: 40px;
     margin: var(--marginMax);
+    min-height: 100vh;
 }
 
 .user{

@@ -17,9 +17,9 @@ const DashboardPage = () => {
                 <Sms />
                 <Charts />
             </div>
-            <div className={styles.right}>
+            {/* <div className={styles.right}>
                 <Rightbar/>
-            </div>
+            </div> */}
         </div>
     );
 };

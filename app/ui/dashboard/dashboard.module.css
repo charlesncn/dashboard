@@ -26,7 +26,3 @@
     gap: var(--gap);
     justify-content: space-between;
 }
-
-.right{
-    flex: 1;
-}
