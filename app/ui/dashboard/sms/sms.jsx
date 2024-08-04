@@ -15,7 +15,7 @@ function createData(
     privilege,
     smsSent,
 ) {
-    return { name, tribe,date, privilege, smsSent };
+    return { name, tribe, date, privilege, smsSent };
 }
 
 const rows = [
@@ -33,13 +33,14 @@ const card = () => (
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead className={styles.tableHeader}>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">tribe&nbsp;(g)</TableCell>
+                        <TableCell>name</TableCell>
+                        <TableCell>tribe&nbsp;</TableCell>
                         <TableCell align="right">date created</TableCell>
-                        <TableCell align="right">privilege&nbsp;(g)</TableCell>
-                        <TableCell align="right">smsSent&nbsp;(g)</TableCell>
+                        <TableCell align="right">privilege&nbsp;</TableCell>
+                        <TableCell align="right">sms sent&nbsp;</TableCell>
                     </TableRow>
                 </TableHead>
+
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow
@@ -49,8 +50,8 @@ const card = () => (
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
+                            <TableCell>{row.tribe}</TableCell>
                             <TableCell align="right">{row.date}</TableCell>
-                            <TableCell align="right">{row.tribe}</TableCell>
                             <TableCell align="right">{row.privilege}</TableCell>
                             <TableCell align="right">{row.smsSent}</TableCell>
                         </TableRow>

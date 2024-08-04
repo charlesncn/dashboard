@@ -14,22 +14,9 @@
 }
 .menu{
     display: flex;
+    align-items: flex-end;
     align-items: center;
-    gap: var(--gap);
-}
-
-.search{
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
-    background-color: var(--activeTab);
-    padding: var(--paddingMin);
-    border-radius: 10px;
-}
-
-.search{
-    display: flex;
-
+    gap: calc(var(--gap)*4);
 }
 
 .input{
@@ -53,4 +40,8 @@
 
 .icon:hover{
     color: var(--safAccent);
+}
+
+.logo{
+    margin: 0px, var(--marginMax);
 }
