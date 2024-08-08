@@ -1,0 +1,66 @@
+.container{
+    border-radius: 10px;
+    margin-top: var(--marginMax);
+    background-color: var(--bg);
+    border-radius: 10px;
+    padding: calc(var(--paddingMax)/2) var(--paddingMax);
+ }
+
+ .header{
+    display: flex;
+    margin-bottom: var(--marginMax);
+ }
+ 
+ .title{
+    flex: 1;
+     font-weight: 200;
+     color: var(--textSoft);
+ }
+ 
+ .details{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap);
+ }
+
+
+ .download{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px var(--paddingMax);
+    border: 1px solid var(--bgBlack);
+    border-radius: 10px;
+    gap: var(--gap);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+ }
+
+ .download:hover {
+    background-color: var(--activeTab);
+    color: var(--safAccent);
+    border: 1px solid var(--safAccent);
+ }
+
+
+ .addUser{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px var(--paddingMax);
+    border-radius: 10px;
+    gap: var(--gap);
+    border: none;
+    color: var(--textWhite);
+    background-color: var(--bgBlack);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+ }
+
+ .addUser:hover {
+    background-color: var(--safAccent);
+    color: var(--textWhite);
+ }

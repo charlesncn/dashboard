@@ -1,0 +1,24 @@
+.search{
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    background-color: var(--activeTab);
+    padding: var(--paddingMin);
+    border-radius: 10px;
+    border: 1px solid var(--activeTab);
+    flex: 2;
+    transition: 0.3s ease-in-out;
+}
+
+.input{
+    background-color: transparent;
+    border: none;
+    color: var(--textSoft);
+}
+
+.input:focus{
+    outline: none;
+}
+.search:hover{
+    border: 1px solid var(--safAccent);
+}
