@@ -25,7 +25,6 @@
     gap: var(--gap);
  }
 
-
  .download{
     display: flex;
     align-items: center;
@@ -37,8 +36,10 @@
     cursor: pointer;
     transition: 0.3s ease-in-out;
  }
-
- .download:hover {
+.info{
+   white-space: nowrap;
+}
+ .download:hover, .close:hover {
     background-color: var(--activeTab);
     color: var(--safAccent);
     border: 1px solid var(--safAccent);
@@ -57,10 +58,73 @@
     background-color: var(--bgBlack);
     cursor: pointer;
     transition: 0.3s ease-in-out;
-
  }
 
- .addUser:hover {
+
+.fomControl{
+   display: flex;
+   flex-direction: column;
+   border-top: 1px solid var(--bgBlack);
+   border-bottom: 1px solid var(--bgBlack);
+   margin: var(--marginMax)  0px;
+   padding: var(--paddingMax) 0px;
+}
+ .addUser:hover, .create:hover{
     background-color: var(--safAccent);
     color: var(--textWhite);
  }
+
+ .createUser{
+   display: flex;
+   gap: calc(var(--gap) * 2);
+ }
+ .input{
+   background-color: var(--activeTab);
+   padding: var(--paddingMin);
+   border-radius: 10px;
+   border: 1px solid var(--activeTab);
+   color: var(--textSoft);
+}
+
+.input:focus{
+   outline: none;
+   border: 1px solid var(--bgBlack);
+}
+
+.create{
+   text-align: center;
+   justify-content: center;
+   min-width: 200px;
+   display: flex;
+   align-items: center;
+   padding: 10px var(--paddingMax);
+   border-radius: 10px;
+   gap: var(--gap);
+   border: none;
+   color: var(--textWhite);
+   background-color: var(--bgBlack);
+   cursor: pointer;
+   transition: 0.3s ease-in-out;
+}
+.close{
+   text-align: center;
+   justify-content: center;
+   min-width: 200px;
+   display: flex;
+   align-items: center;
+   padding: 10px var(--paddingMax);
+   border-radius: 10px;
+   gap: var(--gap);
+   border: 1px solid var(--bgBlack);
+   color: var(--text);
+   background-color: var(--activeTab);
+   cursor: pointer;
+   transition: 0.3s ease-in-out;
+}
+
+.createControl {
+   display: flex;
+   gap: calc(var(--gap) * 4);
+   margin-top: var(--marginMax);
+
+}

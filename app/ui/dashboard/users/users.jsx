@@ -1,10 +1,10 @@
 "use client"
-
 import { DataGrid } from '@mui/x-data-grid';
 import styles from "../users/users.module.css"
 import SearchComponent from '@/app/dashboard/search/search';
 import { MdOutlineCloudDownload, MdAddCircleOutline } from 'react-icons/md'
-import Link from 'next/link';
+
+import { useState } from 'react';
 
 
 const columns = [
@@ -40,6 +40,11 @@ const rows = [
 ];
 
 const users = () => {
+    const [showCreateUser, setShowCreateUser] = useState(false)
+    const [username, setUsername] = useState('');
+    const [division, setDivision] = useState('');
+    const [tribe, setTribe] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -50,15 +55,63 @@ const users = () => {
                         <MdOutlineCloudDownload size={24} />
                         <span className={styles.info}>Download csv</span>
                     </div>
-                    <Link href="/dashboard/users/add">
-                        <button className={styles.addUser}>
-                            <MdAddCircleOutline size={24} />
-                            Add User
-                        </button>
-                    </Link>
+                    <button onClick={() => setShowCreateUser(true)} className={styles.addUser}>
+                        <MdAddCircleOutline size={24} />
+                        Add User
+                    </button>
 
                 </div>
             </div>
+            {showCreateUser ? (
+                    <form onSubmit={handleSubmit}>
+                    <div className={styles.fomControl}>
+                      <div className={styles.createUser}>
+                        {/* Step 3: Bind inputs to state */}
+                        <input
+                          type="text"
+                          placeholder="Username"
+                          className={styles.input}
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          placeholder="division"
+                          className={styles.input}
+                          value={division}
+                          onChange={(e) => setDivision(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          placeholder="tribe"
+                          className={styles.input}
+                          value={tribe}
+                          onChange={(e) => setTribe(e.target.value)}
+                        />
+                        <input
+                          type="password"
+                          placeholder="password"
+                          className={styles.input}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                      <div className={styles.createControl}>
+                        <button type="submit" className={styles.create}>Create</button>
+                        <button
+                          type="button"
+                          onClick={() => setShowCreateUser(false)}
+                          className={styles.close}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+            ) : (
+                <></>
+            )}
+
             <DataGrid
                 rows={rows}
                 columns={columns}
