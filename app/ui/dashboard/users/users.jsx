@@ -1,6 +1,5 @@
 'use client'
-"use client";
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,17 +8,26 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { MdOutlineCloudDownload, MdAddCircleOutline } from 'react-icons/md';
+import {MdAddCircleOutline, MdOutlineCloudDownload} from 'react-icons/md';
 import styles from '../users/users.module.css';
 import SearchComponent from '@/app/dashboard/search/search';
 
 const columns = [
-   { id: 'id', label: 'ID', minWidth: 70 },
-   { id: 'username', label: 'User name', minWidth: 230 },
-   { id: 'created_at', label: 'Created at', minWidth: 230 },
-   { id: 'role', label: 'Role', minWidth: 200 },
-   { id: 'status', label: 'Status', minWidth: 90 },
+   {id: 'id', label: 'ID', minWidth: 70},
+   {id: 'username', label: 'User name', minWidth: 230},
+   {id: 'created_at', label: 'Created at', minWidth: 230},
+   {id: 'role', label: 'Role', minWidth: 200},
+   {id: 'status', label: 'Status', minWidth: 90},
 ];
+
+const formatRole = (role) => {
+   if (!role) return '';
+
+   return role
+      .replace(/_/g, ' ')
+      .toLowerCase()
+      .replace(/(?:^|\s)\S/g, a => a.toUpperCase());
+};
 
 const users = () => {
    const [rows, setRows] = useState([]);
@@ -60,7 +68,7 @@ const users = () => {
 
    const handleChangeRowsPerPage = (event) => {
       setRowsPerPage(+event.target.value);
-      setPage(0); // Reset to the first page when page size changes
+      setPage(0);
    };
 
    const handleSubmit = async (e) => {
@@ -68,19 +76,17 @@ const users = () => {
       try {
          const response = await fetch('/api/users', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, division, tribe, password }),
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, division, tribe, password}),
          });
          if (!response.ok) {
             throw new Error('Failed to create user');
          }
-         // Clear form and hide modal
          setUsername('');
          setDivision('');
          setTribe('');
          setPassword('');
          setShowCreateUser(false);
-         // Refetch users to update the table
          fetchUsers();
       } catch (error) {
          console.error('Error:', error);
@@ -92,13 +98,13 @@ const users = () => {
          <div className={styles.header}>
             <h2 className={styles.title}>Users</h2>
             <div className={styles.details}>
-               <SearchComponent placeholder="Search for a user..." className={styles.search} />
+               <SearchComponent placeholder="Search for a user..." className={styles.search}/>
                <div className={styles.download}>
-                  <MdOutlineCloudDownload size={24} />
+                  <MdOutlineCloudDownload size={24}/>
                   <span className={styles.info}>Download csv</span>
                </div>
                <button onClick={() => setShowCreateUser(true)} className={styles.addUser}>
-                  <MdAddCircleOutline size={24} />
+                  <MdAddCircleOutline size={24}/>
                   Add User
                </button>
             </div>
@@ -151,15 +157,15 @@ const users = () => {
             </form>
          )}
 
-         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-            <TableContainer sx={{ maxHeight: 440 }}>
+         <Paper sx={{width: '100%', overflow: 'hidden'}}>
+            <TableContainer sx={{maxHeight: 440}}>
                <Table stickyHeader aria-label="sticky table">
                   <TableHead>
                      <TableRow>
                         {columns.map((column) => (
                            <TableCell
                               key={column.id}
-                              style={{ minWidth: column.minWidth }}
+                              style={{minWidth: column.minWidth}}
                            >
                               {column.label}
                            </TableCell>
@@ -170,7 +176,7 @@ const users = () => {
                      {rows.map((row) => (
                         <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                            {columns.map((column) => {
-                              const value = row[column.id];
+                              const value = column.id === 'role' ? formatRole(row[column.id]) : row[column.id];
                               return (
                                  <TableCell key={column.id}>
                                     {value}
