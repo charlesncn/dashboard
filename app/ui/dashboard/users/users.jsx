@@ -1,33 +1,43 @@
-"use client"
-import {DataGrid} from '@mui/x-data-grid';
-import styles from "../users/users.module.css"
+'use client'
+"use client";
+import React, { useState, useEffect } from 'react';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import { MdOutlineCloudDownload, MdAddCircleOutline } from 'react-icons/md';
+import styles from '../users/users.module.css';
 import SearchComponent from '@/app/dashboard/search/search';
-import {MdOutlineCloudDownload, MdAddCircleOutline} from 'react-icons/md'
-
-import {useState, useEffect} from 'react';
-
 
 const columns = [
-   {field: 'id', headerName: 'ID', width: 70},
-   {field: 'username', headerName: 'User name', width: 230},
-   {field: 'created_at', headerName: 'Created at', width: 230},
-   {field: 'role', headerName: 'Role', width: 200},
-   {field: 'status', headerName: 'Status', width: 90},
+   { id: 'id', label: 'ID', minWidth: 70 },
+   { id: 'username', label: 'User name', minWidth: 230 },
+   { id: 'created_at', label: 'Created at', minWidth: 230 },
+   { id: 'role', label: 'Role', minWidth: 200 },
+   { id: 'status', label: 'Status', minWidth: 90 },
 ];
 
 const users = () => {
-   const [showCreateUser, setShowCreateUser] = useState(false)
    const [rows, setRows] = useState([]);
-   const [pageSize, setPageSize] = useState(5);
    const [page, setPage] = useState(0);
+   const [rowsPerPage, setRowsPerPage] = useState(10);
    const [rowCount, setRowCount] = useState(0);
    const [loading, setLoading] = useState(false);
+   const [showCreateUser, setShowCreateUser] = useState(false);
+   const [username, setUsername] = useState('');
+   const [division, setDivision] = useState('');
+   const [tribe, setTribe] = useState('');
+   const [password, setPassword] = useState('');
 
    useEffect(() => {
       const fetchUsers = async () => {
          setLoading(true);
          try {
-            const response = await fetch(`/api/users?page=${page + 1}&pageSize=${pageSize}`);
+            const response = await fetch(`/api/users?page=${page + 1}&pageSize=${rowsPerPage}`);
             if (!response.ok) {
                throw new Error('Failed to fetch users');
             }
@@ -42,43 +52,60 @@ const users = () => {
       };
 
       fetchUsers();
-   }, [page, pageSize]);
+   }, [page, rowsPerPage]);
 
-
-   const handlePageChange = (newPage) => {
+   const handleChangePage = (event, newPage) => {
       setPage(newPage);
    };
 
-   const handlePageSizeChange = (newPageSize) => {
-      setPageSize(newPageSize);
-      // Reset to the first page when page size changes
-      setPage(0);
+   const handleChangeRowsPerPage = (event) => {
+      setRowsPerPage(+event.target.value);
+      setPage(0); // Reset to the first page when page size changes
    };
 
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+         const response = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, division, tribe, password }),
+         });
+         if (!response.ok) {
+            throw new Error('Failed to create user');
+         }
+         // Clear form and hide modal
+         setUsername('');
+         setDivision('');
+         setTribe('');
+         setPassword('');
+         setShowCreateUser(false);
+         // Refetch users to update the table
+         fetchUsers();
+      } catch (error) {
+         console.error('Error:', error);
+      }
+   };
 
-   const [username, setUsername] = useState('');
-   const [division, setDivision] = useState('');
-   const [tribe, setTribe] = useState('');
-   const [password, setPassword] = useState('');
    return (
       <div className={styles.container}>
          <div className={styles.header}>
             <h2 className={styles.title}>Users</h2>
             <div className={styles.details}>
-               <SearchComponent placeholder="Search for a user..." className={styles.search}/>
+               <SearchComponent placeholder="Search for a user..." className={styles.search} />
                <div className={styles.download}>
-                  <MdOutlineCloudDownload size={24}/>
+                  <MdOutlineCloudDownload size={24} />
                   <span className={styles.info}>Download csv</span>
                </div>
                <button onClick={() => setShowCreateUser(true)} className={styles.addUser}>
-                  <MdAddCircleOutline size={24}/>
+                  <MdAddCircleOutline size={24} />
                   Add User
                </button>
             </div>
          </div>
 
          {showCreateUser && (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                <div className={styles.fomControl}>
                   <div className={styles.createUser}>
                      <input
@@ -124,27 +151,49 @@ const users = () => {
             </form>
          )}
 
-         <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={pageSize}
-            rowCount={rowCount}
-            pagination
-            paginationMode="server"
-            onPageChange={handlePageChange}
-            onPageSizeChange={handlePageSizeChange}
-            loading={loading}
-            initialState={{
-               pagination: {
-                  paginationModel: {page: 0, pageSize: 5},
-               },
-            }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-         />
+         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <TableContainer sx={{ maxHeight: 440 }}>
+               <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                     <TableRow>
+                        {columns.map((column) => (
+                           <TableCell
+                              key={column.id}
+                              style={{ minWidth: column.minWidth }}
+                           >
+                              {column.label}
+                           </TableCell>
+                        ))}
+                     </TableRow>
+                  </TableHead>
+                  <TableBody>
+                     {rows.map((row) => (
+                        <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                           {columns.map((column) => {
+                              const value = row[column.id];
+                              return (
+                                 <TableCell key={column.id}>
+                                    {value}
+                                 </TableCell>
+                              );
+                           })}
+                        </TableRow>
+                     ))}
+                  </TableBody>
+               </Table>
+            </TableContainer>
+            <TablePagination
+               rowsPerPageOptions={[5, 10, 25, 100]}
+               component="div"
+               count={rowCount}
+               rowsPerPage={rowsPerPage}
+               page={page}
+               onPageChange={handleChangePage}
+               onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+         </Paper>
       </div>
    );
 };
-
 
 export default users;
