@@ -1,51 +1,65 @@
-import { prisma } from '../../../prisma/schema.prisma'
+import { PrismaClient } from "@prisma/client";
 
-export default async function handler(req, res) {
-   switch (req.method) {
-      case "POST":
-         const {username, division, tribe, password} = req.body;
-         try {
-            const newUser = await prisma.sms_system_user.create({
-               data: {
-                  username,
-                  division,
-                  tribe,
-                  password,
-               },
-            });
-            res.status(201).json(newUser)
-         } catch (error) {
-            console.error('Error creating user:', error)
-            res.status(200).json({error: 'Failed to craate users'})
-         }
-         break;
-      case "GET":
-         const {page = 1, pageSize = 5} = req.query
+const prisma = new PrismaClient({
+   log: ['query', 'info', 'warn', 'error'],
+});
 
-         try {
-            const offset = (page - 1) * pageSize;
-            const users = await prisma.sms_system_user.findMany({
-               skip: offset,
-               take: pageSize
-            });
+// Handler for the POST request
+export async function POST(req, res) {
+   const { username, division, tribe, password } = await req.json(); // Since it's an async request
 
-            const totalUsers = await prisma.user.count();
-
-            const totalPages = Math.ceil(totalUsers / pageSize);
-
-            res.status(200).json({
-               users,
-               currentPage: page,
-               totalPages: totalPages,
-               pageSize: pageSize,
-               totalUsers: totalUsers
-            })
-         } catch (error) {
-            console.error('Error creating user:', error)
-            res.status(200).json({error: 'Failed to fetch users'})
-         }
-         break;
-      default:
-         res.status(405).json({error: 'Method Not Allowed'})
+   try {
+      const newUser = await prisma.sms_system_user.create({
+         data: {
+            username,
+            division,
+            tribe,
+            password,
+         },
+      });
+      return new Response(JSON.stringify(newUser), { status: 201 });
+   } catch (error) {
+      console.error('Error creating user:', error);
+      return new Response(JSON.stringify({ error: 'Failed to create user' }), { status: 500 });
    }
 }
+
+// Handler for the GET request
+export async function GET(req, res) {
+   const { searchParams } = new URL(req.url);
+   const page = parseInt(searchParams.get("page")) || 1;
+   const pageSize = parseInt(searchParams.get("pageSize")) || 5;
+
+   try {
+      const offset = (page - 1) * pageSize;
+      const users = await prisma.sms_system_user.findMany({
+         skip: offset,
+         take: pageSize,
+      });
+
+      const totalUsers = await prisma.sms_system_user.count();
+
+      // Convert BigInt fields to string
+      const usersWithStringId = users.map(user => ({
+         ...user,
+         id: user.id.toString(), // Convert BigInt to string
+      }));
+
+      const totalPages = Math.ceil(totalUsers / pageSize);
+
+      return new Response(
+         JSON.stringify({
+            users: usersWithStringId,
+            currentPage: page,
+            totalPages: totalPages,
+            pageSize: pageSize,
+            totalUsers: totalUsers,
+         }),
+         { status: 200 }
+      );
+   } catch (error) {
+      console.error('Error fetching users:', error);
+      return new Response(JSON.stringify({ error: 'Failed to fetch users' }), { status: 500 });
+   }
+}
+
