@@ -12,8 +12,6 @@ export async function POST(req, res) {
       const newUser = await prisma.sms_system_user.create({
          data: {
             username,
-            division,
-            tribe,
             password,
          },
       });
