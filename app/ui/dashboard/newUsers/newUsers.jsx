@@ -1,6 +1,6 @@
 'use client'
 import React, {useState, useEffect} from 'react';
-import styles from './sms.module.css';
+import styles from './newUsers.module.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-const Card = () => {
+const NewSysUsers = () => {
    const [rows, setRows] = useState([]);
 
    useEffect(() => {
@@ -17,7 +17,7 @@ const Card = () => {
       const fetchData = async () => {
          console.log('making api call')
          try {
-            const response = await fetch('/api/sms');
+            const response = await fetch('/api/admin-sms');
             const res = await response.json();
 
             // Log the data to check its structure
@@ -34,7 +34,7 @@ const Card = () => {
          }
       };
 
-      fetchData();
+      fetchData().then(r =>r.data);
    }, []);
 
    return (
@@ -80,4 +80,4 @@ const Card = () => {
    );
 }
 
-export default Card;
+export default NewSysUsers;

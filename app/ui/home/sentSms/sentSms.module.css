@@ -1,0 +1,130 @@
+.container{
+    border-radius: 10px;
+    margin-top: var(--marginMax);
+    background-color: var(--bg);
+    border-radius: 10px;
+    padding: calc(var(--paddingMax)/2) var(--paddingMax);
+ }
+
+ .header{
+    display: flex;
+    margin-bottom: var(--marginMax);
+ }
+ 
+ .title{
+    flex: 1;
+     font-weight: 200;
+     color: var(--textSoft);
+ }
+ 
+ .details{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap);
+ }
+
+ .download{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px var(--paddingMax);
+    border: 1px solid var(--bgBlack);
+    border-radius: 10px;
+    gap: var(--gap);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+ }
+.info{
+   white-space: nowrap;
+}
+ .download:hover, .close:hover {
+    background-color: var(--activeTab);
+    color: var(--safAccent);
+    border: 1px solid var(--safAccent);
+ }
+
+
+ .addUser{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px var(--paddingMax);
+    border-radius: 10px;
+    gap: var(--gap);
+    border: none;
+    color: var(--textWhite);
+    background-color: var(--bgBlack);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+ }
+
+
+.fomControl{
+   display: flex;
+   flex-direction: column;
+   border-top: 1px solid var(--bgBlack);
+   border-bottom: 1px solid var(--bgBlack);
+   margin: var(--marginMax)  0px;
+   padding: var(--paddingMax) 0px;
+}
+ .addUser:hover, .create:hover{
+    background-color: var(--safAccent);
+    color: var(--textWhite);
+ }
+
+ .createUser{
+   display: flex;
+   gap: calc(var(--gap) * 2);
+ }
+ .input{
+   background-color: var(--activeTab);
+   padding: var(--paddingMin);
+   border-radius: 10px;
+   border: 1px solid var(--activeTab);
+   color: var(--textSoft);
+}
+
+.input:focus{
+   outline: none;
+   border: 1px solid var(--bgBlack);
+}
+
+.create{
+   text-align: center;
+   justify-content: center;
+   min-width: 200px;
+   display: flex;
+   align-items: center;
+   padding: 10px var(--paddingMax);
+   border-radius: 10px;
+   gap: var(--gap);
+   border: none;
+   color: var(--textWhite);
+   background-color: var(--bgBlack);
+   cursor: pointer;
+   transition: 0.3s ease-in-out;
+}
+.close{
+   text-align: center;
+   justify-content: center;
+   min-width: 200px;
+   display: flex;
+   align-items: center;
+   padding: 10px var(--paddingMax);
+   border-radius: 10px;
+   gap: var(--gap);
+   border: 1px solid var(--bgBlack);
+   color: var(--text);
+   background-color: var(--activeTab);
+   cursor: pointer;
+   transition: 0.3s ease-in-out;
+}
+
+.createControl {
+   display: flex;
+   gap: calc(var(--gap) * 4);
+   margin-top: var(--marginMax);
+
+}

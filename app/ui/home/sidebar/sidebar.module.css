@@ -1,0 +1,72 @@
+.container{
+    position: sticky;
+    top: 40px;
+    margin: var(--marginMax);
+    min-height: 100vh;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.logoutContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.userImage{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userDetails{
+    display: flex;
+    flex-direction: column;
+}
+.userTitle{
+    font-size: var(--textH4);
+    color: var(--textSoft);
+}
+
+.divider{
+    height: 0.5px;
+    margin: 30px 5px;
+    background-color: var(--textSoft);
+}
+
+.list{
+    list-style: none;
+}
+
+.category{
+    color: var(--text);
+    font-size: var(--textH4);
+    font-weight: bold;
+}
+
+.logout{
+    display: flex;
+    padding: var(--paddingMax);
+    margin: var(--marginMin) 0 0 0;
+    align-items: center;
+    gap: var(--gap);
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    transition: 0.3s;
+}
+
+.logout:hover{
+    background-color: var(--activeTab);
+    color: var(--safAccent);
+}
