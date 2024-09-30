@@ -34,7 +34,7 @@ const NewSysUsers = () => {
          }
       };
 
-      fetchData().then(r =>r.data);
+      fetchData();
    }, []);
 
    return (

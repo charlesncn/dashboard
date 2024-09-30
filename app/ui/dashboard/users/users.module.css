@@ -50,14 +50,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 5px var(--paddingMax);
-    border-radius: 10px;
-    gap: var(--gap);
-    border: none;
-    color: var(--textWhite);
-    background-color: var(--bgBlack);
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
+     padding: 5px var(--paddingMax);
+     border: 1px solid var(--bgBlack);
+     border-radius: 10px;
+     gap: var(--gap);
+     cursor: pointer;
+     transition: 0.3s ease-in-out;
  }
 
 
@@ -72,6 +70,7 @@
  .addUser:hover, .create:hover{
     background-color: var(--safAccent);
     color: var(--textWhite);
+     border: 1px solid var(--safAccent);
  }
 
  .createUser{
@@ -97,14 +96,12 @@
    min-width: 200px;
    display: flex;
    align-items: center;
-   padding: 10px var(--paddingMax);
-   border-radius: 10px;
-   gap: var(--gap);
-   border: none;
-   color: var(--textWhite);
-   background-color: var(--bgBlack);
-   cursor: pointer;
-   transition: 0.3s ease-in-out;
+    padding: 5px var(--paddingMax);
+    border: 1px solid var(--bgBlack);
+    border-radius: 10px;
+    gap: var(--gap);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 .close{
    text-align: center;

@@ -1,0 +1,22 @@
+.submit{
+    text-align: center;
+    justify-content: center;
+    min-width: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 12px var(--paddingMax);
+    margin-top: var(--marginMax);
+    border: 1px solid var(--bgBlack);
+    border-radius: 10px;
+    gap: var(--gap);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.submit:hover{
+    background-color: var(--safAccent);
+    color: var(--textWhite);
+    border: 1px solid var(--safAccent);
+}
+

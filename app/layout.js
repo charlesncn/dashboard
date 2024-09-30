@@ -1,17 +1,21 @@
-import { Inter } from 'next/font/google'
+"use client"
 import './ui/globals.css'
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@safaricom/sui";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
-  title: 'SMS Dashboard',
-  description: 'Next.js',
-}
+// export const metadata = {
+//   title: 'SMS Dashboard',
+//   description: 'Next.js',
+// }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+      <ThemeProvider theme={theme}>
+        {children}
+      </ThemeProvider>
+      </body>
     </html>
   )
 }
