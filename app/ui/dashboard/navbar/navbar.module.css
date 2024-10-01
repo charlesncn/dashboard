@@ -14,7 +14,6 @@
 }
 .menu{
     display: flex;
-    align-items: flex-end;
     align-items: center;
     gap: calc(var(--gap)*4);
 }
@@ -34,7 +33,7 @@
     gap: var(--gap);
 }
 .icon{
-    margin: 0px var(--marginMin);
+    margin: 0 var(--marginMin);
     transition: 0.3s;
 }
 
@@ -43,5 +42,5 @@
 }
 
 .logo{
-    margin: 0px, var(--marginMax);
+    margin: 0, var(--marginMax);
 }

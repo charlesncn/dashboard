@@ -1,6 +1,6 @@
 const Login = () => {
     return (
-        <diiv>Login</diiv>
+        <div></div>
     )
 }
 
