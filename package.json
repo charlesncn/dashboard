@@ -19,6 +19,7 @@
     "@safaricom-mxl/ui": "^0.0.0",
     "@safaricom/sui": "^1.5.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "next": "^14.2.7",
     "next-auth": "^4.24.8",
     "prisma": "^5.18.0",
