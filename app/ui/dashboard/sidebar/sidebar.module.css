@@ -45,7 +45,7 @@
 .logout{
     display: flex;
     padding: var(--paddingMax);
-    margin: var(--marginMin) 0px;
+    margin: var(--marginMin) 0;
     align-items: center;
     gap: var(--gap);
     cursor: pointer;

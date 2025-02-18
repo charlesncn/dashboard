@@ -52,13 +52,8 @@ const HomeSidebar = () => {
     return (
        <div className={styles.container}>
            <div className={styles.content}>
-               <div className={styles.user}>
-                   <Image className={styles.userImage} src="/noavatar.png" alt="" width="50" height="50"/>
-                   <div className={styles.userDetails}>
-                       <span className={styles.userName}>John Doe</span>
-                       <span className={styles.userTitle}>Dev</span>
-                   </div>
-               </div>
+               <Image src='/logo.png' alt='' height='26' width='111' className={styles.logo}/>
+
                <div className={styles.divider}></div>
                <ul className={styles.list}>
                    {menuItems.map((category) => (

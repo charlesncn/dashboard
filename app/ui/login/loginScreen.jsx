@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from './loginScreen.module.css';
 
 const LoginScreen = () => {
-    const [ldapAuthenticated, setLdapAuthenticated] = useState(true);
+    const [ldapAuthenticated, setLdapAuthenticated] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +14,8 @@ const LoginScreen = () => {
 
     // Helper function to format the username
     const formatUsername = (username) => {
-        if (!username.endsWith('@safaricom.co.ke')) {
+        const lowerCaseUsername = username.toLowerCase();
+        if (!lowerCaseUsername.endsWith('@safaricom.co.ke')) {
             return `${username}@safaricom.co.ke`;
         }
         return username;
@@ -25,7 +26,7 @@ const LoginScreen = () => {
         if (!ldapAuthenticated) {
             // LDAP Authentication
             try {
-                const formattedUsername = formatUsername(username); // Ensure username has @safaricom.co.ke
+                const formattedUsername = formatUsername(username);
                 const ldapResponse = await fetch('http://10.184.7.96:10000/v1/ldap/', {
                     method: 'POST',
                     headers: {

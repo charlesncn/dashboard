@@ -22,15 +22,19 @@ const Navbar = () => {
             <div className={styles.title}>{pathName.split('/').pop()}</div>
             <div className={styles.menu}>
                 <div className={styles.icons}>
-                    <MdDashboard className={styles.icon} size={20} />
+                    <MdDashboard className={styles.icon} size={20}/>
                     <MdOutlineChat
                         className={styles.icon}
                         size={20}
                         onClick={handleOpenModal}
                     />
-                    <MdNotifications className={styles.icon} size={20} />
+                    <MdNotifications className={styles.icon} size={20}/>
                 </div>
-                <Image src='/logo.png' alt='' height='26' width='111' className={styles.logo} />
+                <div className={styles.user}>
+                    <div className={styles.userDetails}>
+                        <span className={styles.userName}></span>
+                    </div>
+                </div>
             </div>
             <TransitionsModal
                 open={open}
